@@ -24,7 +24,8 @@ header("Access-Control-Allow-Methods: POST"); // method type
         $users_obj->email = $data->email;
         //$users_obj->password = md5($data->password);
         // $users_obj->password = password_hash($data->password, PASSWORD_BCRYPT);
-        $users_obj->password = password_hash($data->password, PASSWORD_DEFAULT);
+        // $users_obj->password = $data->password;
+         $users_obj->password = password_hash($data->password, PASSWORD_DEFAULT);
 
         // call the check email function.......
         $email_data = $users_obj->check_email(); //check if the user email is = to the email in the table

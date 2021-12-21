@@ -30,13 +30,13 @@ header("Access-Control-Allow-Methods: POST"); // method type
                 $email = $user_data['email'];
                 $password = $user_data['password'];
 
-                if(!password_verify($users_obj->password, $password)){ // 4.. //compare the normal password to th db password
+                if(!password_verify($users_obj->password, $password)){ // 4.. //compare the normal password to the db password/hash password
                
                     // jwt
                     $iss = "localhost";
                     $iat = time();
                     $nbf = $iat + 10;
-                    $exp = $iat +30;
+                    $exp = $iat + 180; // expire 60 seconds
                     $aud = "myusers";
                     $user_arr_data = array(
                         "id" => $user_data['id'],
@@ -80,7 +80,7 @@ header("Access-Control-Allow-Methods: POST"); // method type
             http_response_code(404); //data not found
             echo json_encode(array(
                 "status" => 0,
-                "message" => "User does not exist"
+                "message" => "All data needed"
             ));
         }
     } else{  // 1.. 

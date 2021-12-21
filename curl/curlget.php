@@ -14,12 +14,17 @@
         echo $e;
     } else {
         $decoded = json_decode($resp, true);
-          print_r($decoded);
-        // $encoded =json_encode($decoded);
-        // echo $encoded[data];
-        echo $decoded['data'];
-     
+        echo '<pre>';
+          //print_r($decoded);
+        
+    $data = $decoded['data'][0]['id'];
+    echo $data;
+
+    $image = $decoded['data'][0]['avatar'];
     }
 
     curl_close($ch);
 ?>
+
+<img src="<?php echo $image ?>" alt="">
+ 
